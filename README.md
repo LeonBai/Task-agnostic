@@ -7,7 +7,9 @@
 
 #### Demanded library:
 
- timesynth(for data creation); Keras >=2.0; Tensorflow >= 2.0; Numpy;
+ timesynth(for data creation); skimage;
+ 
+ Keras >=2.0; Tensorflow >= 2.0; Numpy;
 
 Files:
 
