@@ -1,0 +1,26 @@
+## For data creation
+
+
+import timesynth as ts
+
+time_sampler = ts.TimeSampler(stop_time=25)
+irregular_time_samples = time_sampler.sample_irregular_time(num_points=400, keep_percentage=50)
+sinc = ts.signals.Sinusoidal(frequency=0.25)
+white_noise = ts.noise.GaussianNoise(std=.4)
+timeseries = ts.TimeSeries(signal_generator=sinc, noise_generator=white_noise)
+
+## Rolling the created timeseries into subsequences
+## Outputs:
+##      X: (Un-de-noised) original subsequence-based TimeSeries
+##      X_denoised: denoised X
+
+
+from skimage.util import view_as_blocks, view_as_windows
+from sklearn import preprocessing
+
+tem = np.squeeze(view_as_windows(np.expand_dims(samples, axis = 1), window_shape=(10,1),step=1))
+
+X = tem
+#X = X.reshape((1149,1,264))
+
+X_denoised = samples[:191]
